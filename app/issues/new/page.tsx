@@ -1,5 +1,5 @@
 "use client";
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import { Button, Callout, Spinner, Text, TextField } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
@@ -25,6 +25,18 @@ const NewIssuePage = () => {
     const router = useRouter();
     const SimpleMDE = dynamic(() => import("react-simplemde-editor"));
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const onSubmit = handleSubmit(async (data) => {
+        try {
+            setIsSubmitting(true);
+            await axios.post("/api/issues", data);
+            router.push("/issues");
+        } catch (error) {
+            setIsSubmitting(false);
+            setError("An error has occurred.");
+        }
+    });
 
     return (
         <div className="max-w-4xl">
@@ -33,17 +45,7 @@ const NewIssuePage = () => {
                     <Callout.Text>{error}</Callout.Text>
                 </Callout.Root>
             )}
-            <form
-                className="space-y-3"
-                onSubmit={handleSubmit(async (data) => {
-                    try {
-                        await axios.post("/api/issues", data);
-                        router.push("/issues");
-                    } catch (error) {
-                        setError("An error has occurred.");
-                    }
-                })}
-            >
+            <form className="space-y-3" onSubmit={onSubmit}>
                 <TextField.Root placeholder="Title" {...register("title")} />
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
                 <Controller
@@ -54,7 +56,9 @@ const NewIssuePage = () => {
                     )}
                 />
                 <ErrorMessage>{errors.description?.message}</ErrorMessage>
-                <Button>Submit New Issue</Button>
+                <Button disabled={isSubmitting}>
+                    Submit New Issue {isSubmitting && <Spinner size="2" />}
+                </Button>
             </form>
         </div>
     );
