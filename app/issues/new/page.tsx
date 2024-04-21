@@ -13,6 +13,10 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 
 type issueForm = z.infer<typeof createIssueSchema>;
 
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+    ssr: false,
+});
+
 const NewIssuePage = () => {
     const {
         register,
@@ -23,7 +27,6 @@ const NewIssuePage = () => {
         resolver: zodResolver(createIssueSchema),
     });
     const router = useRouter();
-    const SimpleMDE = dynamic(() => import("react-simplemde-editor"));
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 

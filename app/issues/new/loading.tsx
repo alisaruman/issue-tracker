@@ -1,7 +1,12 @@
-import React from "react";
+import { Box, Skeleton } from "@radix-ui/themes";
 
 const NewIssuePageLoading = () => {
-    return <div>Loading...</div>;
+    return (
+        <Box className="max-w-xl">
+            <Skeleton />
+            <Skeleton />
+        </Box>
+    );
 };
 
 export default NewIssuePageLoading;
