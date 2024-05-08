@@ -3,7 +3,6 @@ import { User } from "@prisma/client";
 import { Select, Skeleton } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 
 const AssigneeSelect = () => {
     const { data, error, isLoading } = useQuery({
