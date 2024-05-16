@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import IssueFormLoading from "./loading";
+import { Metadata } from "next";
 
 const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
     ssr: false,
@@ -9,6 +10,11 @@ const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
 
 const IssueNew = () => {
     return <IssueForm />;
+};
+
+export const metadata: Metadata = {
+    title: "Issue Tracker - New issue",
+    description: "Create an issue",
 };
 
 export default IssueNew;
