@@ -1,13 +1,13 @@
+import authOptions from "@/app/auth/authOptions";
 import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
+import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+import { cache } from "react";
+import AssigneeSelect from "./AssigneeSelect";
+import IssueDeleteButton from "./IssueDeleteButton";
 import IssueDetail from "./IssueDetail";
 import IssueEditButton from "./IssueEditButton";
-import IssueDeleteButton from "./IssueDeleteButton";
-import { getServerSession } from "next-auth";
-import authOptions from "@/app/auth/authOptions";
-import AssigneeSelect from "./AssigneeSelect";
-import { cache } from "react";
 
 interface Props {
     params: { id: string };

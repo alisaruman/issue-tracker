@@ -1,7 +1,6 @@
-import React from "react";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import IssueFormLoading from "./loading";
-import { Metadata } from "next";
 
 const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
     ssr: false,

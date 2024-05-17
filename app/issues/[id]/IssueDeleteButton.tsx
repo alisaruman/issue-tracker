@@ -2,7 +2,7 @@
 import { AlertDialog, Button, Flex, Spinner } from "@radix-ui/themes";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const IssueDeleteButton = ({ issueId }: { issueId: number }) => {
     const router = useRouter();

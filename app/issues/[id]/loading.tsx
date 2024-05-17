@@ -1,4 +1,4 @@
-import { Flex, Card, Box, Skeleton } from "@radix-ui/themes";
+import { Box, Card, Flex, Skeleton } from "@radix-ui/themes";
 
 const IssueDetailPageLoading = () => {
     return (
