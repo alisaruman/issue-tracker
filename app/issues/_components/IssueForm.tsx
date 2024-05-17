@@ -14,7 +14,7 @@ import { z } from "zod";
 
 type issueFormData = z.infer<typeof issueSchema>;
 
-const issueForm = ({ issue }: { issue?: Issue }) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
     const {
         register,
         control,
@@ -72,4 +72,4 @@ const issueForm = ({ issue }: { issue?: Issue }) => {
     );
 };
 
-export default issueForm;
+export default IssueForm;
